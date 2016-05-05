@@ -71,4 +71,21 @@ class Welcome extends CI_Controller
         }
         die;
     }
+    
+    public function check_order()
+    {
+        $params = $_REQUEST;
+        $username = $params['user_name'];
+        $ret = $this->m_user_menu->get_detail_user_menu($username);
+        if (!$ret) 
+        {
+            echo "Hôm nay bạn chưa đặt món.\n";
+            echo "/menu để xem menu ngày hôm nay.";
+        }
+        else
+        {
+            echo "Hôm nay bạn đã đặt món #$ret->menu_id $ret->name.\n";
+        }
+        die;
+    }
 }

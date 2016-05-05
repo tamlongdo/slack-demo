@@ -41,4 +41,19 @@ class M_user_menu extends MY_Model
         }
     }
     
+    public function get_detail_user_menu($username)
+    {
+        $this->db->select('*');
+        $this->db->from($this->table_name);
+        $this->db->join('menu', 'menu.id = user_menu.menu_id');
+        $where = array(
+            'username'   => $username,
+            'order_date' => date("Y-m-d 00:00:00")
+        );
+        $this->db->where($where);
+        $q = $this->db->get()->result();
+        $ret = ! empty($q) ? $q[0] : null;
+        return $ret;
+    }
+    
 }
