@@ -23,4 +23,8 @@ class Welcome extends CI_Controller {
 	    var_dump('111111111');
 		phpinfo();
 	}
+	
+	public function demo(){
+	    var_dump($_REQUEST);
+	}
 }
