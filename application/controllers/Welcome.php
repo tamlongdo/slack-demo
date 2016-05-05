@@ -17,6 +17,7 @@ class Welcome extends CI_Controller
             echo $msg;
         }
         echo $text;die;
+        echo '111111';
         */
     }
     public function index()
@@ -88,4 +89,6 @@ class Welcome extends CI_Controller
         }
         die;
     }
+    
+    
 }
