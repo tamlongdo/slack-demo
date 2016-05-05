@@ -28,16 +28,18 @@ class Welcome extends CI_Controller
 
     public function demo()
     {
-        $command = $_POST['command'];
-        $text = $_POST['text'];
-        $token = $_POST['token'];
+        //$command = $_REQUEST['command'];
+        //$text = $_REQUEST['text'];
+        //$token = $_REQUEST['token'];
         // Check the token and make sure the request is from our team
+        /*
         if ($token != 'Moj5ICFUmSAXZOeE4eeHbw40') { // replace this with the token from your slash command configuration page
             $msg = "The token for the slash command doesn't match. Check your script.";
             die($msg);
             echo $msg;
         }
         echo $text;die;
+        */
         echo '======= MENU HÔM NAY===========<br>';
         for ($i = 0; $i < 5; $i++)
         {
