@@ -23,18 +23,10 @@ class MY_Model extends CI_Model
      * @return object | null $ret
      *        
      */
-    public function get_list($rank = false, $order_by = NULL, $order_way = NULL, $row_limit = NULL, $where = NULL)
+    public function get_list($where = NULL)
     {
         $this->db->select('*');
         $this->db->from($this->table_name);
-        if ($rank) {
-            $this->db->order_by($this->rank, "asc");
-        } elseif (! is_null($order_by) && ! is_null($order_way)) {
-            $this->db->order_by($order_by, $order_way);
-        }
-        if ($row_limit){
-            $this->db->limit($row_limit);
-        }
         if($where){
             $this->db->where($where);
         }
