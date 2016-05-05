@@ -51,7 +51,24 @@ class Welcome extends CI_Controller
     public function order()
     {
         $params = $this->input->post();
-        var_dump($params);
+        $menu_id = $params['text'];
+        $username = $params['user_name'];
+        $order_date = date("Y-m-d 00:00:00");
+        $arrData = array(
+            'menu_id'   =>  $menu_id,
+            'username'  =>  $username,
+            'order_date'=>  $order_date
+        );
+        if (!$this->m_user_menu->insert($arrData))
+        {
+            echo 'Đặt món không thành công.';
+        }
+        else 
+        {
+            $menu_name = $this->m_menu->get_detail($menu_id)->name;
+            echo "$username đã đặt thành công món #$menu_id $menu_name\n";
+            echo "Kiểm tra lại chi tiết bằng /check-order\n";
+        }
         die;
     }
 }
