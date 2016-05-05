@@ -32,6 +32,12 @@ class M_user_menu extends MY_Model
                 {
                     return false;
                 }
+                $arrDelWhere = array(
+                    'username'  => $arrData['username'],
+                    'order_date'=> $arrData['order_date']
+                );
+                $this->db->where($arrDelWhere);
+                $this->db->delete('user_menu');
                 $q = $this->db->insert($this->table_name, $arrData);
                 return $q;
             }
