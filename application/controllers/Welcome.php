@@ -38,11 +38,20 @@ class Welcome extends CI_Controller
             $i = 1;
             foreach ($arrMenu as $item)
             {
-                echo "$i. $item->name. \n";
+                echo "#$i. $item->name. \n";
                 $i++;
             }
             echo "==================================\n";
+            echo "/order #số\n";
+            
         }
+        die;
+    }
+    
+    public function order()
+    {
+        $params = $this->input->post();
+        var_dump($params);
         die;
     }
 }
