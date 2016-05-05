@@ -44,7 +44,7 @@ class Welcome extends CI_Controller
                 echo "$i. $item->name. \n";
                 $i++;
             }
-            echo '==================================\n';
+            echo "==================================\n";
         }
         die;
     }
