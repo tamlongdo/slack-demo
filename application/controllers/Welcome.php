@@ -37,6 +37,12 @@ class Welcome extends CI_Controller
             die($msg);
             echo $msg;
         }
-        echo $text;die;
+        echo '======= MENU HÔM NAY===========<br>';
+        for ($i = 0; $i < 5; $i++)
+        {
+            echo "$i. Cơm chang nước mắm. <br>";
+        }
+        echo '==================================';
+        die;
     }
 }
