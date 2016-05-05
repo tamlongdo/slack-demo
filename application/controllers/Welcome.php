@@ -50,7 +50,7 @@ class Welcome extends CI_Controller
     
     public function order()
     {
-        $params = $this->input->post();
+        $params = $_REQUEST;
         $menu_id = $params['text'];
         $username = $params['user_name'];
         $order_date = date("Y-m-d 00:00:00");

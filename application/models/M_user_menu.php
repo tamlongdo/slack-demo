@@ -12,7 +12,7 @@ class M_user_menu extends MY_Model
 
     public $table_name = 'user_menu';
 
-    public $user_id = 'user_id';
+    public $username = 'username';
 
     public $menu_id = 'menu_id';
 
@@ -23,9 +23,15 @@ class M_user_menu extends MY_Model
         $id = $arrData['menu_id'];
         if (! empty($id)) {
             $this->table_name = 'menu';
+            $this->id = 'id';
             $flag = $this->get_detail($id);
             $this->table_name = 'user_menu';
             if ($flag) {
+                $check_exist = $this->get_list($arrData);
+                if (!empty($check_exist))
+                {
+                    return false;
+                }
                 $q = $this->db->insert($this->table_name, $arrData);
                 return $q;
             }
@@ -34,4 +40,5 @@ class M_user_menu extends MY_Model
             return false;
         }
     }
+    
 }
