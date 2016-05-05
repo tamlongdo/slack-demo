@@ -24,6 +24,7 @@ class M_user_menu extends MY_Model
         if (! empty($id)) {
             $this->table_name = 'menu';
             $flag = $this->get_detail($id);
+            $this->table_name = 'user_menu';
             if ($flag) {
                 $q = $this->db->insert($this->table_name, $arrData);
                 return $q;
