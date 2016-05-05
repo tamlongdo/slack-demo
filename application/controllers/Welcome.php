@@ -3,34 +3,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Welcome extends CI_Controller
 {
-
-    /**
-     * Index Page for this controller.
-     *
-     * Maps to the following URL
-     * http://example.com/index.php/welcome
-     * - or -
-     * http://example.com/index.php/welcome/index
-     * - or -
-     * Since this controller is set as the default controller in
-     * config/routes.php, it's displayed at http://example.com/
-     *
-     * So any other public methods not prefixed with an underscore will
-     * map to /index.php/welcome/<method_name>
-     * 
-     * @see https://codeigniter.com/user_guide/general/urls.html
-     */
+    
+    public function __construct(){
+        parent::__construct();
+        $this->load->model('m_menu');
+        $this->load->model('m_user');
+        $this->load->model('m_user_menu');
+    }
     public function index()
     {
-        var_dump('111111111');
         phpinfo();
     }
 
     public function demo()
     {
         //$command = $_REQUEST['command'];
-        //$text = $_REQUEST['text'];
-        //$token = $_REQUEST['token'];
+        //$text = $_POST['text'];
+        //$token = $_POST['token'];
         // Check the token and make sure the request is from our team
         /*
         if ($token != 'Moj5ICFUmSAXZOeE4eeHbw40') { // replace this with the token from your slash command configuration page
@@ -40,13 +29,23 @@ class Welcome extends CI_Controller
         }
         echo $text;die;
         */
-        var_dump($_POST);die;
-        echo "======= MENU HÔM NAY===========\n";
-        for ($i = 0; $i < 5; $i++)
+        $params = $this->input->post();
+        $arrMenu = $this->m_menu->get_list();
+        if (empty($arrMenu))
         {
-            echo "$i. Cơm chang nước mắm. \n";
+            echo 'Hôm nay chưa có menu bạn ơi.';
         }
-        echo '==================================\n';
+        else 
+        {
+            echo "======= MENU HÔM NAY===========\n";
+            $i = 1;
+            foreach ($arrMenu as $item)
+            {
+                echo "$i. $item->name. \n";
+                $i++;
+            }
+            echo '==================================\n';
+        }
         die;
     }
 }
