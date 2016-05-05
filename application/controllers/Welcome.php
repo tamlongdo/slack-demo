@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-	    var_dump('111111111');die;
+	    var_dump('111111111');
 		phpinfo();
 	}
 }
