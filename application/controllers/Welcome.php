@@ -9,8 +9,7 @@ class Welcome extends CI_Controller
         $this->load->model('m_menu');
         $this->load->model('m_user');
         $this->load->model('m_user_menu');
-        
-        $params = $this->input->post();
+        /*
         $token = $params['token'];
         if ($token != 'Moj5ICFUmSAXZOeE4eeHbw40') { // replace this with the token from your slash command configuration page
             $msg = "The token for the slash command doesn't match. Check your script.";
@@ -18,14 +17,16 @@ class Welcome extends CI_Controller
             echo $msg;
         }
         echo $text;die;
+        */
     }
     public function index()
     {
         phpinfo();
     }
 
-    public function demo()
+    public function menu()
     {
+        $params = $this->input->post();
         $arrMenu = $this->m_menu->get_list();
         if (empty($arrMenu))
         {
